@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/trash-calendar/static/css/main.85481539.css",
-    "main.js": "/trash-calendar/static/js/main.d0a1be14.js",
+    "main.css": "/trash-calendar/static/css/main.58f2e4ae.css",
+    "main.js": "/trash-calendar/static/js/main.027f97a8.js",
     "index.html": "/trash-calendar/index.html",
-    "main.85481539.css.map": "/trash-calendar/static/css/main.85481539.css.map",
-    "main.d0a1be14.js.map": "/trash-calendar/static/js/main.d0a1be14.js.map"
+    "main.58f2e4ae.css.map": "/trash-calendar/static/css/main.58f2e4ae.css.map",
+    "main.027f97a8.js.map": "/trash-calendar/static/js/main.027f97a8.js.map"
   },
   "entrypoints": [
-    "static/css/main.85481539.css",
-    "static/js/main.d0a1be14.js"
+    "static/css/main.58f2e4ae.css",
+    "static/js/main.027f97a8.js"
   ]
 }
