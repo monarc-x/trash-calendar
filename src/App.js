@@ -8,7 +8,7 @@ const personas = [
   { nombre: "Renato", color: "bg-blue-200" }
 ];
 
-const fechaReferencia = dayjs("2024-09-16"); // Fecha de referencia ajustada al día después
+const fechaReferencia = dayjs("2024-09-15"); 
 
 function App() {
   const [turnos, setTurnos] = useState([]);
