@@ -23,7 +23,9 @@ function App() {
     const primerDiaDelMes = mes.startOf('month').day();
     const nuevoTurno = [];
     
-    for (let i = 0; i < primerDiaDelMes; i++) {
+    const primerDiaAjustado = primerDiaDelMes === 0 ? 6 : primerDiaDelMes - 1;
+
+    for (let i = 0; i < primerDiaAjustado; i++) {
       nuevoTurno.push({ dia: '', persona: '' });
     }
 
