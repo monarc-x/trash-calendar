@@ -66,7 +66,7 @@ function App() {
         >
           Mes Anterior
         </button>
-        <h2 className="text-xl font-semibold my-2 sm:my-0">
+        <h2 className="text-xl font-semibold my-2 sm:my-0 text-center">
           {mesActual.format("MMMM YYYY")}
         </h2>
         <button
