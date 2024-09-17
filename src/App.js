@@ -8,7 +8,7 @@ const personas = [
   { nombre: "Renato", color: "bg-blue-200" }
 ];
 
-const fechaReferencia = dayjs("2024-09-15"); 
+const fechaReferencia = dayjs("2024-09-16"); // Fecha de referencia ajustada al día después
 
 function App() {
   const [turnos, setTurnos] = useState([]);
@@ -59,29 +59,29 @@ function App() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       <h1 className="text-3xl font-bold mb-4">Calendario de Basura</h1>
 
-      <div className="flex justify-between items-center w-full max-w-md mb-4">
+      <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-md mb-4">
         <button
           onClick={mesAnterior}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="px-3 py-1 sm:px-4 sm:py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm sm:text-base"
         >
           Mes Anterior
         </button>
-        <h2 className="text-xl font-semibold">
+        <h2 className="text-xl font-semibold my-2 sm:my-0">
           {mesActual.format("MMMM YYYY")}
         </h2>
         <button
           onClick={mesSiguiente}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="px-3 py-1 sm:px-4 sm:py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm sm:text-base"
         >
           Mes Siguiente
         </button>
       </div>
 
-      <table className="w-full max-w-md bg-white border rounded shadow">
+      <table className="w-full max-w-md bg-white border rounded shadow-md">
         <thead>
           <tr>
             {["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"].map(dia => (
-              <th key={dia} className="p-2 border-b">{dia}</th>
+              <th key={dia} className="p-1 sm:p-2 border-b text-sm sm:text-base">{dia}</th>
             ))}
           </tr>
         </thead>
@@ -93,10 +93,10 @@ function App() {
           }, []).map((row, rowIndex) => (
             <tr key={rowIndex}>
               {row.map(({ dia, persona }, cellIndex) => (
-                <td key={cellIndex} className="p-2 border-t border-l">
+                <td key={cellIndex} className="p-1 sm:p-2 border-t border-l text-center">
                   <div className={`text-center ${persona ? persona.color : ''}`}>
-                    <div className={dia ? "font-bold" : ""}>{dia || ''}</div>
-                    <div className="text-sm">{persona ? persona.nombre : ''}</div>
+                    <div className={`font-bold ${dia ? "text-sm sm:text-base" : ""}`}>{dia || ''}</div>
+                    <div className="text-xs sm:text-sm">{persona ? persona.nombre : ''}</div>
                   </div>
                 </td>
               ))}
