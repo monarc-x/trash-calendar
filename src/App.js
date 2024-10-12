@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
-import 'dayjs/locale/es'; 
+import 'dayjs/locale/es';
 
 const personas = [
   { nombre: "Carlos", color: "bg-red-200" },
@@ -8,7 +8,7 @@ const personas = [
   { nombre: "Renato", color: "bg-blue-200" }
 ];
 
-const fechaReferencia = dayjs("2024-09-15"); 
+const fechaReferencia = dayjs("2024-09-16");
 
 function App() {
   const [turnos, setTurnos] = useState([]);
@@ -22,7 +22,7 @@ function App() {
     const diasEnMes = mes.daysInMonth();
     const primerDiaDelMes = mes.startOf('month').day();
     const nuevoTurno = [];
-    
+
     const primerDiaAjustado = primerDiaDelMes === 0 ? 6 : primerDiaDelMes - 1;
 
     for (let i = 0; i < primerDiaAjustado; i++) {
