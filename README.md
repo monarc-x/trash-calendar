@@ -1,25 +1,25 @@
-# Calendario de Basura
+# Trash Calendar
 
-## Descripción
+## Description
 
-Este proyecto es una aplicación web sencilla para gestionar el turno de sacar la basura en un hogar compartido. La aplicación muestra un calendario mensual con los días de la semana y resalta a la persona que debe sacar la basura cada día. 
+This project is a simple web application to manage the trash duty schedule in a shared household. The application displays a monthly calendar with the days of the week and highlights the person responsible for taking out the trash each day.
 
-### Funcionalidades
+### Features
 
-- Muestra un calendario con los días de la semana de lunes a domingo.
-- Indica el nombre de la persona que debe sacar la basura cada día.
-- Permite navegar entre meses.
-- Cada persona tiene un color de fondo distinto en el calendario.
+- Displays a calendar with the days of the week from Monday to Sunday.
+- Indicates the name of the person who should take out the trash each day.
+- Allows navigation between months.
+- Each person has a different background color in the calendar.
 
-## Tecnologías Utilizadas
+## Technologies Used
 
-- **React**: Librería para construir la interfaz de usuario.
-- **Tailwind CSS**: Framework de CSS para estilizar la aplicación.
-- **Day.js**: Librería para el manejo de fechas.
+- **React**: Library for building the user interface.
+- **Tailwind CSS**: CSS framework for styling the application.
+- **Day.js**: Library for date handling.
 
-## Instalación
+## Installation
 
-1. **Clona el repositorio:**
+1. **Clone the repository:**
 
    ```bash
    git clone https://github.com/USERNAME/REPO_NAME.git
