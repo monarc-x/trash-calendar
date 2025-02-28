@@ -8,7 +8,7 @@ const people = [
   { name: "Renato", color: "bg-blue-200" }
 ];
 
-const referenceDate = dayjs("2024-09-16");
+const referenceDate = dayjs("2024-09-17");
 
 function App() {
   const [shifts, setShifts] = useState([]);
