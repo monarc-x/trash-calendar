@@ -2,59 +2,59 @@ import { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
 import 'dayjs/locale/es';
 
-const personas = [
-  { nombre: "Carlos", color: "bg-red-200" },
-  { nombre: "Jorge", color: "bg-green-200" },
-  { nombre: "Renato", color: "bg-blue-200" }
+const people = [
+  { name: "Carlos", color: "bg-red-200" },
+  { name: "Jorge", color: "bg-green-200" },
+  { name: "Renato", color: "bg-blue-200" }
 ];
 
-const fechaReferencia = dayjs("2024-09-16");
+const referenceDate = dayjs("2024-09-16");
 
 function App() {
-  const [turnos, setTurnos] = useState([]);
-  const [mesActual, setMesActual] = useState(dayjs());
+  const [shifts, setShifts] = useState([]);
+  const [currentMonth, setCurrentMonth] = useState(dayjs());
 
   useEffect(() => {
-    generarTurnos(mesActual);
-  }, [mesActual]);
+    generateShifts(currentMonth);
+  }, [currentMonth]);
 
-  const generarTurnos = (mes) => {
-    const diasEnMes = mes.daysInMonth();
-    const primerDiaDelMes = mes.startOf('month').day();
-    const nuevoTurno = [];
+  const generateShifts = (month) => {
+    const daysInMonth = month.daysInMonth();
+    const firstDayOfMonth = month.startOf('month').day();
+    const newShift = [];
 
-    const primerDiaAjustado = primerDiaDelMes === 0 ? 6 : primerDiaDelMes - 1;
+    const adjustedFirstDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
 
-    for (let i = 0; i < primerDiaAjustado; i++) {
-      nuevoTurno.push({ dia: '', persona: '' });
+    for (let i = 0; i < adjustedFirstDay; i++) {
+      newShift.push({ day: '', person: '' });
     }
 
-    for (let dia = 1; dia <= diasEnMes; dia++) {
-      const fechaDia = mes.date(dia);
-      const diferenciaDias = fechaDia.diff(fechaReferencia, 'day');
-      const personaIndex = (diferenciaDias % personas.length + personas.length) % personas.length;
-      nuevoTurno.push({
-        dia,
-        persona: personas[personaIndex]
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dayDate = month.date(day);
+      const dayDifference = dayDate.diff(referenceDate, 'day');
+      const personIndex = (dayDifference % people.length + people.length) % people.length;
+      newShift.push({
+        day,
+        person: people[personIndex]
       });
     }
 
-    const diasExtras = 7 - (nuevoTurno.length % 7);
-    if (diasExtras < 7 && diasExtras > 0) {
-      for (let i = 0; i < diasExtras; i++) {
-        nuevoTurno.push({ dia: '', persona: '' });
+    const extraDays = 7 - (newShift.length % 7);
+    if (extraDays < 7 && extraDays > 0) {
+      for (let i = 0; i < extraDays; i++) {
+        newShift.push({ day: '', person: '' });
       }
     }
 
-    setTurnos(nuevoTurno);
+    setShifts(newShift);
   };
 
-  const mesAnterior = () => {
-    setMesActual(mesActual.subtract(1, 'month'));
+  const previousMonth = () => {
+    setCurrentMonth(currentMonth.subtract(1, 'month'));
   };
 
-  const mesSiguiente = () => {
-    setMesActual(mesActual.add(1, 'month'));
+  const nextMonth = () => {
+    setCurrentMonth(currentMonth.add(1, 'month'));
   };
 
   return (
@@ -63,16 +63,16 @@ function App() {
 
       <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-md mb-4">
         <button
-          onClick={mesAnterior}
+          onClick={previousMonth}
           className="px-3 py-1 sm:px-4 sm:py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm sm:text-base"
         >
           Mes Anterior
         </button>
         <h2 className="text-xl font-semibold my-2 sm:my-0 text-center">
-          {mesActual.format("MMMM YYYY")}
+          {currentMonth.format("MMMM YYYY")}
         </h2>
         <button
-          onClick={mesSiguiente}
+          onClick={nextMonth}
           className="px-3 py-1 sm:px-4 sm:py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm sm:text-base"
         >
           Mes Siguiente
@@ -88,17 +88,17 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {turnos.reduce((rows, { dia, persona }, index) => {
+          {shifts.reduce((rows, { day, person }, index) => {
             if (index % 7 === 0) rows.push([]);
-            rows[rows.length - 1].push({ dia, persona });
+            rows[rows.length - 1].push({ day, person });
             return rows;
           }, []).map((row, rowIndex) => (
             <tr key={rowIndex}>
-              {row.map(({ dia, persona }, cellIndex) => (
+              {row.map(({ day, person }, cellIndex) => (
                 <td key={cellIndex} className="p-1 sm:p-2 border-t border-l text-center">
-                  <div className={`text-center ${persona ? persona.color : ''}`}>
-                    <div className={`font-bold ${dia ? "text-sm sm:text-base" : ""}`}>{dia || ''}</div>
-                    <div className="text-xs sm:text-sm">{persona ? persona.nombre : ''}</div>
+                  <div className={`text-center ${person ? person.color : ''}`}>
+                    <div className={`font-bold ${day ? "text-sm sm:text-base" : ""}`}>{day || ''}</div>
+                    <div className="text-xs sm:text-sm">{person ? person.name : ''}</div>
                   </div>
                 </td>
               ))}
